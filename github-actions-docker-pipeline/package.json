@@ -1,0 +1,16 @@
+{
+  "name": "github-actions-docker-pipeline",
+  "version": "1.0.0",
+  "description": "A project to demonstrate CI/CD pipeline using GitHub Actions and Docker.",
+  "main": "src/app.js",
+  "scripts": {
+    "start": "node src/app.js",
+    "build": "docker build -t github-actions-docker-pipeline ."
+  },
+  "dependencies": {
+    "express": "^4.17.1"
+  },
+  "devDependencies": {},
+  "author": "",
+  "license": "ISC"
+}

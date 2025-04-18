@@ -6,7 +6,7 @@ on:
       run_job:
         description: 'Run Specific Job'
         required: false
-        default: false
+        default: 'false'
         type: boolean
       custom_message:
         description: 'Enter a custom message'
@@ -20,14 +20,14 @@ jobs:
       - run: echo "Exploring Workflow Dispatch Trigger"
 
   job2:
-    job2:
-  runs-on: ubuntu-latest
-  if: ${{ fromJSON(github.event.inputs.run_job) }}
-  steps:
-    - name: Printing Custom Message
-      run: echo "${{ github.event.inputs.custom_message }}"
+    runs-on: ubuntu-latest
+    if: ${{ github.event.inputs.run_job == 'true' || github.event.inputs.run_job }}
+    steps:
+      - name: Printing Custom Message
+        run: echo "${{ github.event.inputs.custom_message }}"
 
-    - name: Printing run-job boolean value
-      if: ${{ github.event.inputs.run_job == 'true' || github.event.inputs.run_job }}
-      run: echo "run_job input is: ${{ github.event.inputs.run_job }}"
+      - name: Printing run-job boolean value
+        if: ${{ github.event.inputs.run_job == 'true' || github.event.inputs.run_job }}
+        run: echo "run_job input is: ${{ github.event.inputs.run_job }}"
+
 
